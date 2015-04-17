@@ -1,0 +1,28 @@
+{
+  "name": "node-estafeta",
+  "version": "1.0.0",
+  "description": "Modulo de NodeJs consumidor de servicios de Estafeta",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lentiummmx/node-estafeta.git"
+  },
+  "keywords": [
+    "node",
+    "js",
+    "estafeta"
+  ],
+  "author": "José Daniel Morales Ríos <lentium.mmx@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lentiummmx/node-estafeta/issues"
+  },
+  "homepage": "https://github.com/lentiummmx/node-estafeta",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "request": "^2.55.0"
+  }
+}
