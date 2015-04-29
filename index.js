@@ -47,6 +47,48 @@ var NodEstafeta = function() {
 };
 
 NodEstafeta.prototype.rastrear = function(data) {
+    var request = require('request');
+    
+    request.post ("http://rastreo3.estafeta.com/RastreoWebInternet/consultaEnvio.do",{
+      form:data},function(err,res){
+               if(err) {
+                // data.error(err);
+                data.result(err);
+                return;
+               }
+
+
+               var html = res.body;
+              
+                var cheerio = require('cheerio'),
+                $ = cheerio.load(html),
+                estafetaResult = {};
+
+                $('div table').each(function(i, table){
+                  var tableChild = $(this);
+                  var $$ = cheerio.load(tableChild.html());
+                  var dataRequest = [];
+                  $$('tr').each(function(j, tr){
+                           var trChild = $$(this).children();;
+                           if(j== 1){
+                              console.log('****'+trChild.eq(1).children().text());
+                              var  row =  {informacionEnvio:trChild.eq(1).children().text()};
+                              dataRequest.push(row); 
+                              
+                           }
+                           
+                    }); 
+                  estafetaResult['encabezado'] = dataRequest;
+                });
+
+
+                     
+
+
+
+          return data.result (null,estafetaResult)
+
+      } );
 
 };
 
